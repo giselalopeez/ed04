@@ -1,5 +1,11 @@
 package org.example;
 
+private static void initAgenda(Agenda agendaContactos) {
+    agendaContactos.addContact("John Doe", "1234567890");
+    agendaContactos.addContact("Jane Doe", "9876543210");
+    agendaContactos.addContact("Mary Jane", "1122334455");
+}
+
 public class Main {
     public static void main(String[] args) {
         // Crear una nueva agenda.
