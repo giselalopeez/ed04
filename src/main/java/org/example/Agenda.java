@@ -4,16 +4,32 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Clase que representa una agenda para guardar y gestionar contactos.
+ */
 public class Agenda {
-    private List<Contacto> contacts; // Lista de Contacto
+    /**
+     * Lista que almacena todos los contactos de la agenda.
+     */
+    private List<Persona> contacts;
 
+    /**
+     * Constructor para inicializar una nueva agenda vacía.
+     */
     public Agenda() {
         this.contacts = new ArrayList<>();
     }
 
+    /**
+     * Añade un contacto nuevo con su teléfono a la agenda.
+     * Si el contacto ya existe, añade un nuevo número a su lista.
+     *
+     * @param name  El nombre del contacto.
+     * @param phone El número de teléfono del contacto.
+     */
     public void addContact(String name, String phone) {
         boolean exists = false;
-        for (Contacto c : contacts) {
+        for (Persona c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
                 exists = true;
                 c.getPhones().add(phone);
@@ -22,30 +38,38 @@ public class Agenda {
         }
 
         if (!exists) {
-            Contacto newContact = new Contacto(name, phone);
+            Persona newContact = new Persona(name, phone);
             contacts.add(newContact);
         }
     }
 
+    /**
+     * Elimina un contacto de la agenda por su nombre.
+     *
+     * @param name El nombre del contacto a eliminar.
+     */
     public void removeContact(String name) {
-        Iterator<Contacto> it = contacts.iterator();
-
+        Iterator<Persona> it = contacts.iterator();
         while (it.hasNext()) {
-            Contacto c = it.next();
-
+            Persona c = it.next();
             if (c.getName().equalsIgnoreCase(name)) {
                 it.remove();
             }
         }
     }
 
+    /**
+     * Modifica un número de teléfono existente por uno nuevo para un contacto dado.
+     *
+     * @param name     El nombre del contacto.
+     * @param oldPhone El número de teléfono que quieres reemplazar.
+     * @param newPhone El nuevo número de teléfono.
+     */
     public void modifyPhoneNumber(String name, String oldPhone, String newPhone) {
-        for (Contacto c : contacts) {
+        for (Persona c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
                 List<String> phones = c.getPhones();
-
                 int index = phones.indexOf(oldPhone);
-
                 if (index != -1) {
                     phones.set(index, newPhone);
                 }
@@ -53,7 +77,12 @@ public class Agenda {
         }
     }
 
-    public List<Contacto> getContacts() {
+    /**
+     * Devuelve la lista de todos los contactos en la agenda.
+     *
+     * @return Lista actual de contactos.
+     */
+    public List<Persona> getContacts() {
         return this.contacts;
     }
 }
