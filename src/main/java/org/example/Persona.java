@@ -29,7 +29,7 @@ public class Persona {
         this.phones.add(phone);
     }
 
-    /**
+     /**
      * Obtiene el nombre de la persona.
      *
      * @return El nombre actual de la persona.
@@ -39,21 +39,21 @@ public class Persona {
     }
 
     /**
-     * Establece un nuevo nombre para la persona.
-     *
-     * @param name El nuevo nombre que quieres establecer.
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Devuelve la lista de teléfonos asociados a la persona.
      *
      * @return Lista de teléfonos.
      */
     public List<String> getPhones() {
         return this.phones;
+    }
+
+    /**
+     * Establece un nuevo nombre para la persona.
+     *
+     * @param name El nuevo nombre que quieres establecer.
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
